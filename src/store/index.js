@@ -1,22 +1,21 @@
 import { createStore } from 'redux'
+import { ActionTypes } from '../constants/action-types'
 
-const INITIAL_STATE = {
-    data: [
-        {
-            nome: 'teste',
-            descricao: 'descicao',
-            preco: 12.00,
-            dataHoraAtualizacao: Date.now()
-        }
-    ]
+const INITIAL_STATE = { 
+    product: {},
+    products: [] 
 }
 
-const products = (state = INITIAL_STATE, action) => {
-    switch (action.type) {
-        case 'ADD_PRODUCT':
-            return { ...state, data: [ ...state.data, action.product ] }    
+const products = (state = INITIAL_STATE, { type, payload }) => {
+    switch (type) {
+        case ActionTypes.SET_PRODUCTS:
+            return { ...state, products: payload }
+        case ActionTypes.ADD_PRODUCT:
+            return { ...state, products: [ ...state.products, payload ] }    
+        case ActionTypes.SET_PRODUCT:
+            return { ...state, product: payload }
         default:
-            return state;
+            return state
     }
 }
 
