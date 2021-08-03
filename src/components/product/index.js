@@ -1,6 +1,6 @@
 import React from 'react'
-import AddProduct from './addProduct'
-import ListProducts from './listProducts'
+import AddProduct from './add-product'
+import ListProducts from './list-products'
 
 const Products = () => {
     

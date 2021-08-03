@@ -5,7 +5,8 @@ import { Provider } from 'react-redux'
 import store from './store'
 
 const Home = lazy(() => import('./components/home'))
-const Estoque = lazy(() => import('./components/product'))
+const Products = lazy(() => import('./components/product'))
+const Product = lazy(() => import('./components/product/detail-product'))
 
 const App = () => (
   <Provider store={store}>
@@ -13,7 +14,8 @@ const App = () => (
       <Suspense fallback={<div>Loading...</div>}>
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route path="/estoque" component={Estoque} />
+          <Route path="/produtos" component={Products} />
+          <Route path="/produto" component={Product} />
         </Switch>
       </Suspense>
     </Router>

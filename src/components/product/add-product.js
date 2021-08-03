@@ -1,15 +1,20 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
+import { addProduct } from '../../actions/product-actions'
+import Api from '../../api'
+
 
 const AddProduct = () => {
-    
+
     const dispatch = useDispatch()
     const [product, setProduct] = useState({})
 
     const resetFormFields = () => document.getElementById('create-product-form').reset()
-    
-    const addProduct = () => {
-        dispatch({ type: 'ADD_PRODUCT', product })
+    const save = product => Api.create(product)
+
+    const addAndResetForm = () => {
+        save(product)
+        dispatch(addProduct(product))
         resetFormFields()
     }
 
@@ -24,7 +29,7 @@ const AddProduct = () => {
             <label htmlFor="price">Preço</label>
             <input name="price" onChange={event => setProduct({ ...product, preco: event.target.value })} />
 
-            <button type="button" onClick={addProduct}>Adicionar produto</button>
+            <button type="button" onClick={addAndResetForm}>Adicionar produto</button>
         </form>
     )
 }
