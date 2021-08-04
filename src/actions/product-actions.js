@@ -14,7 +14,7 @@ export const addProduct = product => {
     }
 }
 
-export const setProduct = product => {
+export const selectProduct = product => {
     return {
         type: ActionTypes.SET_PRODUCT,
         payload: product

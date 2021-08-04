@@ -11,11 +11,11 @@ const Product = lazy(() => import('./components/product/detail-product'))
 const App = () => (
   <Provider store={store}>
     <Router>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<div>Carregando...</div>}>
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/produtos" component={Products} />
-          <Route path="/produto" component={Product} />
+          <Route path="/produto/:codigo" component={Product} />
         </Switch>
       </Suspense>
     </Router>
